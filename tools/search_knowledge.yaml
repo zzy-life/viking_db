@@ -1,0 +1,178 @@
+identity:
+  name: search_knowledge
+  author: zzy
+  label:
+    en_US: Search Knowledge
+    zh_Hans: 知识库搜索
+    pt_BR: Search Knowledge
+description:
+  human:
+    en_US: 用于对知识库进行检索，返回检索到的文本片段，不生成回答。
+    zh_Hans: 用于对知识库进行检索，返回检索到的文本片段，不生成回答。
+    pt_BR: 用于对知识库进行检索，返回检索到的文本片段，不生成回答。
+  llm: 用于对知识库进行检索，返回检索到的文本片段，不生成回答。
+parameters:
+  - name: host
+    type: string
+    required: true
+    label:
+      en_US: API Host
+      zh_Hans: API主机地址
+      pt_BR: API Host
+    human_description:
+      en_US: The host address of Viking Knowledge Base service
+      zh_Hans: Viking知识库服务的主机地址
+      pt_BR: The host address of Viking Knowledge Base service
+    llm_description: Viking知识库服务的主机地址
+    form: form
+  - name: ak
+    type: string
+    required: true
+    label:
+      en_US: Access Key
+      zh_Hans: 访问密钥
+      pt_BR: Access Key
+    human_description:
+      en_US: Access Key for authentication
+      zh_Hans: 认证用的访问密钥
+      pt_BR: Access Key for authentication
+    llm_description: 认证用的访问密钥
+    form: form
+  - name: sk
+    type: string
+    required: true
+    label:
+      en_US: Secret Key
+      zh_Hans: 密钥
+      pt_BR: Secret Key
+    human_description:
+      en_US: Secret Key for authentication
+      zh_Hans: 认证用的密钥
+      pt_BR: Secret Key for authentication
+    llm_description: 认证用的密钥
+    form: form
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: Query
+      zh_Hans: 查询内容
+      pt_BR: Query
+    human_description:
+      en_US: The search query to look up in the knowledge base
+      zh_Hans: 在知识库中查找的搜索内容
+      pt_BR: The search query to look up in the knowledge base
+    llm_description: 在知识库中查找的搜索内容
+    form: llm
+  - name: collection_name
+    type: string
+    required: false
+    label:
+      en_US: Collection Name
+      zh_Hans: 知识库名称
+      pt_BR: Collection Name
+    human_description:
+      en_US: The name of the collection to search in (required if resource_id is not provided)
+      zh_Hans: 要搜索的知识库名称（如未提供resource_id则必填）
+      pt_BR: The name of the collection to search in (required if resource_id is not provided)
+    llm_description: 要搜索的知识库名称（如未提供resource_id则必填）
+    form: form
+  - name: resource_id
+    type: string
+    required: false
+    label:
+      en_US: Resource ID
+      zh_Hans: 知识库ID
+      pt_BR: Resource ID
+    human_description:
+      en_US: The resource ID to search in (required if collection_name is not provided)
+      zh_Hans: 要搜索的知识库ID（如未提供collection_name则必填）
+      pt_BR: The resource ID to search in (required if collection_name is not provided)
+    llm_description: 要搜索的知识库ID（如未提供collection_name则必填）
+    form: form
+  - name: project
+    type: string
+    required: false
+    default: default
+    label:
+      en_US: Project
+      zh_Hans: 项目
+      pt_BR: Project
+    human_description:
+      en_US: The project name in Viking Knowledge Base
+      zh_Hans: 火山知识库中的项目名称
+      pt_BR: The project name in Viking Knowledge Base
+    llm_description: 火山知识库中的项目名称
+    form: form
+  - name: rerank_switch
+    type: boolean
+    required: false
+    default: false
+    label:
+      en_US: Rerank Switch
+      zh_Hans: 重排开关
+      pt_BR: Rerank Switch
+    human_description:
+      en_US: Whether to enable reranking
+      zh_Hans: 是否启用重排序
+      pt_BR: Whether to enable reranking
+    llm_description: 是否启用重排序
+    form: form
+  - name: retrieve_count
+    type: number
+    required: false
+    default: 25
+    label:
+      en_US: Retrieve Count
+      zh_Hans: 检索数量
+      pt_BR: Retrieve Count
+    human_description:
+      en_US: Number of documents to retrieve
+      zh_Hans: 要检索的文档数量
+      pt_BR: Number of documents to retrieve
+    llm_description: 要检索的文档数量
+    form: form
+  - name: limit
+    type: number
+    required: false
+    default: 10
+    label:
+      en_US: Limit
+      zh_Hans: 限制数量
+      pt_BR: Limit
+    human_description:
+      en_US: Maximum number of results to return
+      zh_Hans: 返回结果的最大数量
+      pt_BR: Maximum number of results to return
+    llm_description: 返回结果的最大数量
+    form: form
+  - name: dense_weight
+    type: number
+    required: false
+    default: 0.5
+    label:
+      en_US: Dense Weight
+      zh_Hans: 密集权重
+      pt_BR: Dense Weight
+    human_description:
+      en_US: Weight for dense retrieval
+      zh_Hans: 密集检索的权重
+      pt_BR: Weight for dense retrieval
+    llm_description: 密集检索的权重
+    form: form
+  - name: doc_filter
+    type: string
+    required: false
+    label:
+      en_US: Document Filter
+      zh_Hans: 文档过滤器
+      pt_BR: Document Filter
+    human_description:
+      en_US: Filter conditions for document retrieval in JSON string format
+      zh_Hans: 文档检索的过滤条件，请以JSON字符串格式提供，请参考官方文档
+      pt_BR: Filter conditions for document retrieval in JSON string format
+    llm_description: 文档检索的过滤条件，需要提供JSON字符串格式
+    form: form
+extra:
+  python:
+    source: tools/search_knowledge.py 

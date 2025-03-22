@@ -1,0 +1,50 @@
+version: 0.0.1
+type: plugin
+author: zzy
+name: viking_db
+label:
+  en_US: viking_db
+  ja_JP: viking_db
+  zh_Hans: viking_db
+  pt_BR: viking_db
+description:
+  en_US: 火山知识库插件基于火山引擎的知识库服务搭建，旨在增强的知识检索与问答能力，支持用户无缝调用火山引擎 VikingDB 的检索召回功能，帮助 Bot 实现更智能、更灵活的交互体验。无论是基础的知识问答，还是复杂的多工具编排场景，该插件都能为用户提供强大的知识库访问能力
+  ja_JP: 火山知识库插件基于火山引擎的知识库服务搭建，旨在增强的知识检索与问答能力，支持用户无缝调用火山引擎 VikingDB 的检索召回功能，帮助 Bot 实现更智能、更灵活的交互体验。无论是基础的知识问答，还是复杂的多工具编排场景，该插件都能为用户提供强大的知识库访问能力
+  zh_Hans: 火山知识库插件基于火山引擎的知识库服务搭建，旨在增强的知识检索与问答能力，支持用户无缝调用火山引擎 VikingDB 的检索召回功能，帮助 Bot 实现更智能、更灵活的交互体验。无论是基础的知识问答，还是复杂的多工具编排场景，该插件都能为用户提供强大的知识库访问能力
+  pt_BR: 火山知识库插件基于火山引擎的知识库服务搭建，旨在增强的知识检索与问答能力，支持用户无缝调用火山引擎 VikingDB 的检索召回功能，帮助 Bot 实现更智能、更灵活的交互体验。无论是基础的知识问答，还是复杂的多工具编排场景，该插件都能为用户提供强大的知识库访问能力
+icon: icon.svg
+resource:
+  memory: 268435456
+  permission:
+    tool:
+      enabled: true
+    model:
+      enabled: true
+      llm: true
+      text_embedding: false
+      rerank: false
+      tts: false
+      speech2text: false
+      moderation: false
+    endpoint:
+      enabled: true
+    app:
+      enabled: true
+    storage:
+      enabled: true
+      size: 1048576
+plugins:
+  tools:
+    - provider/viking_db.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+created_at: 2025-03-22T09:23:15.5112933+08:00
+privacy: PRIVACY.md
+verified: false
